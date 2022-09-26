@@ -12,7 +12,7 @@
             property to display its value.
           </p>
           <!-- add event listener to the button element -->
-          <button class="btn btn-primary m-2">Add 1</button>
+          <button class="btn btn-primary m-2" @click="state.counter++">Add 1</button>
           <p>The button has been clicked {{}} times.</p>
         </div>
         <div class="border p-1">
@@ -26,7 +26,7 @@
             "greeting" property and pass its value into an alert().
           </p>
           <!-- add event listener to the button element -->
-          <button class="btn btn-primary m-2">Greet</button>
+          <button class="btn btn-primary m-2" @click="state.greet">Greet</button>
         </div>
       </div>
     </div>
@@ -35,15 +35,20 @@
 
 
 <script>
-import { reactive } from "vue";
+import { getCurrentInstance, reactive } from "vue";
 export default {
   name: "events-exercise",
   setup() {
     // NOTE typically state will be abstracted to a global AppState
     const state = reactive({
       //add property called "counter"
+      counter: 1,
       //add property called "greeting"
+      greeting: "Hello World",
       //create a method called "greet"
+      greet() {
+        alert(state.greeting)
+      }
     });
     return {
       state,
@@ -56,4 +61,5 @@ export default {
 
 
 <style scoped>
+
 </style>
